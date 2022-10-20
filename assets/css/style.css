@@ -53,7 +53,7 @@ a:hover{
 
 body{
     background-color: rgb(255, 255, 255);
-    text-align: center;
+    /* text-align: center; */
     margin-top: 100px;
 }
 
@@ -63,15 +63,15 @@ body{
     grid-template-rows: 50px 300px 30px 300px 60px 300px 60px;
     justify-content: 30% 30% 30%;
     background-color: aqua;
-    margin: ;
+    margin: 0;
     width: 100%;
-    //border: 1px solid black;
+    /* border: 1px solid black; */
     text-align: center;
     
 }
 
 .caja{
-    //border: 1px solid black;
+    /* border: 1px solid black; */
     background-color: rgb(255, 255, 255);
 }
 .c1{
@@ -94,7 +94,18 @@ body{
     flex-direction: column;
     justify-content: center;
 }
-.iconFooter{
+footer{
     display: flex;
     flex-direction: row-reverse;
+}
+
+form{
+    margin: 2rem auto 2rem auto;
+    max-width: 20rem;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    color: #304b3c;
 }
