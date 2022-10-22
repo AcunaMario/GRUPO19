@@ -89,6 +89,7 @@ body{
 .c4{
     grid-column: 3/4;
 }
+
 .nombreReceta{
     display: flex;
     flex-direction: column;
