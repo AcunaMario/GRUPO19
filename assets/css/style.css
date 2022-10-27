@@ -112,3 +112,11 @@ form{
     justify-content: center;
     color: #304b3c;
 }
+
+.error{
+    color: #dc3545;
+}
+
+.inputError{
+    border: solid 1px #dc3545;
+}
