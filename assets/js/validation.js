@@ -5,7 +5,9 @@ window.addEventListener("load", function(){
     let mail=document.getElementById("mail");
     let recetas=document.querySelectorAll(".form-check-input");
     let mailHelp= document.getElementById("emailHelp")
+    let recetasContainer = document.getElementById("recetas")
     let finRecetas = document.getElementById("finRecetas")
+    let textArea = document.getElementById("comentario")
     let errors = []
 
 
@@ -13,12 +15,15 @@ window.addEventListener("load", function(){
     function nombreVacio(){
         return (nombre.value=="")
     }
+
     function apellidoVacio(){
         return (apellido.value=="")
     }
+
     function emailVacio(){
         return (mail.value=="")
     }
+
     function emailIncompleto(){
         let incluye = "@ .com mail"
         incluye = incluye.split(" ")
@@ -38,15 +43,17 @@ window.addEventListener("load", function(){
         }
         return !correcto
     }
+
     function recetasVacias(){
         let vacias=true
-        for (let i=0; i<recetas.length; i++){
-            if(recetas[i].checked==true){
+        for (let item of recetas){
+            if(item.checked==true){
                 vacias=false
             }
         }
         return vacias
     }
+
 
     //elimina la label de error, saca el id inputError de "input" y saca el error "id" del array
     function removeError(input,id){
@@ -62,8 +69,8 @@ window.addEventListener("load", function(){
     //elimina la label de error de las recetas, saca el id inputError de recetas y saca el error del array
     function removeRecetasError(){
         if(errors.includes("recetasError")){
-            for (i=0; i<recetas.length; i++){
-                recetas[i].classList.remove("inputError")
+            for (let item of recetas){
+                item.classList.remove("inputError")
             }
             document.getElementById("recetasError").remove();
             errors = errors.filter(function(item) {
@@ -71,6 +78,7 @@ window.addEventListener("load", function(){
             })
         }
     }
+
 
     //en caso de que ese elemento no haya dado error previamente crea e inserta una label con el texto
     //"text", después del elemento "place", y con el id "id", y pushea el id en el array errors
@@ -87,75 +95,126 @@ window.addEventListener("load", function(){
 
     //aplica insertLabel, y ademas añade la clase inputError a "place" (no sirve para recetas ni para mail)
     function insertErrorLabel(place, text,id){
-        if (!errors.includes(id)){
-            insertLabel(place,text,id)
-            place.classList.add("inputError")
-        }
+        insertLabel(place,text,id)
+        place.classList.add("inputError")
     }
 
-    // nombre.addEventListener("keypress", function(e){
-    //     if (!errors.includes("nombreError")){
-    //         if (nombreVacio()){
-    //             errors.push("nombreError")
-    //         }
-    //     }
-    //     else if (!nombreVacio()){
-    //         errors.remove("nombreError")
-    //     }
-    // })
-    
-    // apellido.addEventListener("keypress", function(e){
-    //     if (!errors.includes("nombreError")){
-    //         if (nombreVacio()){
-    //             errors.push("nombreError")
-    //         }
-    //     }
-    //     else if (!nombreVacio()){
-    //         errors.remove("nombreError")
-    //     }
-    // })
 
-    form.addEventListener("submit",function(e){
+    //Se fija si hay que poner error, y en caso de que haya que hacerlo, hace todo el proceso
+    function checkNombre(){
         if (nombreVacio()){
             insertErrorLabel(nombre,"Ingrese su nombre","nombreError")
         } else {
             removeError(nombre,"nombreError");
         }
+    }
+
+    function checkApellido(){
         if (apellidoVacio()){
             insertErrorLabel(apellido,"Ingrese su apellido","apellidoError")
         }
         else{
             removeError(apellido,"apellidoError");
         }
+    }
+
+    function checkMail(){
         if (emailVacio()){
+            removeError(mail,"mailIncompletoError")
             insertLabel(mailHelp,"Ingrese su mail","mailError")
             mail.classList.add("inputError")
         }
         else if (emailIncompleto()){
-            insertLabel(mailHelp,"Ingrese una dirección de email correcta","mailError")
+            removeError(mail,"mailError")
+            insertLabel(mailHelp,"Ingrese una dirección de email correcta","mailIncompletoError")
             mail.classList.add("inputError")
         }
         else{
             removeError(mail,"mailError");
+            removeError(mail,"mailIncompletoError")
         }
+    }
+    
+    function checkRecetas(){
         if (recetasVacias()){
-            for (i=0; i<recetas.length; i++){
-                recetas[i].classList.add("inputError")
+            for (let item of recetas){
+                item.classList.add("inputError")
             }
             insertLabel(finRecetas,"Elija alguna receta","recetasError")
         }
         else{
             removeRecetasError();
         }
+    }
+
+
+    //cada vez que se levanta el dedo de una tecla llama a la función check... correcta
+    nombre.addEventListener("keyup", function(e){
+        checkNombre();
+        InsertErrorList()
+    })
+    
+    apellido.addEventListener("keyup", function(e){
+        checkApellido();
+        InsertErrorList()
+    })
+    
+    mail.addEventListener("keyup", function(e){
+        checkMail();
+        InsertErrorList()
+    })
+
+    recetasContainer.addEventListener("click", function(e){
+        checkRecetas();
+        InsertErrorList()
+    })
+
+
+    function stringErrores(){
+        let aux="Por favor complete los siguientes campos: <br>";
+        for (let error of errors){
+            switch (error){
+                case "nombreError": aux+="Nombre<br>"; break
+                case "apellidoError": aux+="Apellido<br>"; break
+                case "mailError": aux+="Email<br>"; break
+                case "mailIncompletoError": aux+="Email<br>"; break
+                case "recetasError": aux+="Recetas<br>"; break
+                default: aux+=""
+            }
+        }
+        console.log()
+        return aux
+    }
+
+    function InsertErrorList(){
+        removeError(textArea,"errorList");
+        if(errors.length>0){
+            insertLabel(textArea, stringErrores(),"errorList");
+        }
+    }
+
+
+    //cuando se apreta enviar, si hay errores se los coloca (si no fueron colocados previamente)
+    //y no se envía el formulario, en caso contrario, sí se envía
+    form.addEventListener("submit",function(e){
+        checkNombre();
+        checkApellido();
+        checkMail();
+        checkRecetas();
+        InsertErrorList();
         if(errors.length >0){
             e.preventDefault()
         }
     })
     
+
+    //al apretar el boton reset se eliminan todos los errores del formulario
     form.addEventListener("reset", function(e){
         removeError(nombre,"nombreError");
         removeError(apellido,"apellidoError");
         removeError(mail,"mailError");
+        removeError(mail,"mailIncompletoError");
+        removeError(textArea,"errorList");
         removeRecetasError();
     })
 })

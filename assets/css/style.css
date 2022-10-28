@@ -133,13 +133,12 @@ form{
 
 .tituloFormulario{
     background-color: white;
-    display: flex;
+    display: block;
     position: fixed;
-    justify-content: center;
     margin-top: 2vh;
     color: var(--verdeIntermedio);
-    border: solid 5px var(--verdeOscuro);
-    border-radius: 10px;
+    border: solid 3px var(--verdeOscuro);
+    border-radius: 12px;
     box-shadow: 0, 0, 20px black;
 }
 
