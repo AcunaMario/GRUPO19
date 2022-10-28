@@ -4,86 +4,158 @@ window.addEventListener("load", function(){
     let apellido=document.getElementById("apellido");
     let mail=document.getElementById("mail");
     let recetas=document.querySelectorAll(".form-check-input");
-    let nombreError = document.getElementById("nombreError")
-    let apellidoError = document.getElementById("apellidoError")
-    let mailError = document.getElementById("mailError")
-    let recetasError = document.getElementById("recetasError")
-    
-    form.addEventListener("submit",function(e){
-        e.preventDefault();
-        function nombreVacio(){
-            return (nombre.value=="")
-        }
-        function apellidoVacio(){
-            return (apellido.value=="")
-        }
-        function emailVacio(){
-            return (mail.value=="")
-        }
-        function emailIncompleto(){
-            return (!(emailVacio())&&(!(mail.value.includes("@")) || !(mail.value.includes(".com"))))
-        }
+    let mailHelp= document.getElementById("emailHelp")
+    let finRecetas = document.getElementById("finRecetas")
+    let errors = []
 
-        function recetasVacias(){
-            let vacias=true
-            for (let i=0; i<recetas.length; i++){
-                if(recetas[i].checked==true){
-                    vacias=false
+
+    //si el campo esta vacio/incompleto/sin checkear ninguna opción devuelve true
+    function nombreVacio(){
+        return (nombre.value=="")
+    }
+    function apellidoVacio(){
+        return (apellido.value=="")
+    }
+    function emailVacio(){
+        return (mail.value=="")
+    }
+    function emailIncompleto(){
+        let incluye = "@ .com mail"
+        incluye = incluye.split(" ")
+        let noIncluye = ", < > * ° | ¬ ^ / \\ ? ¿ ¡ ! ' # $ % & / ( ) = ´ ~ ` { } [ ] ¨ ; :"
+        noIncluye = noIncluye.split(" ")
+        let correcto = false
+        if (!emailVacio()){
+            correcto = true
+            for (let item of incluye){
+                correcto=correcto && mail.value.includes(item)
+            }
+            if(correcto){
+                for (let item of noIncluye){
+                    correcto= correcto && !mail.value.includes(item)
                 }
             }
-            return vacias
         }
+        return !correcto
+    }
+    function recetasVacias(){
+        let vacias=true
+        for (let i=0; i<recetas.length; i++){
+            if(recetas[i].checked==true){
+                vacias=false
+            }
+        }
+        return vacias
+    }
 
-        if (nombreVacio()){
-            nombre.classList.add("inputError")
-            nombreError.classList.add("error")
-            nombreError.innerHTML="Ingrese su nombre"
+    //elimina la label de error, saca el id inputError de "input" y saca el error "id" del array
+    function removeError(input,id){
+        if (errors.includes(id)){
+            input.classList.remove("inputError")
+            document.getElementById(id).remove()
+            errors = errors.filter(function(item) {
+                return item !== id
+            })
         }
-        else{
-            nombre.classList.remove("inputError")
-            nombreError.classList.remove("error")
-            nombreError.innerHTML=""
+    }
+
+    //elimina la label de error de las recetas, saca el id inputError de recetas y saca el error del array
+    function removeRecetasError(){
+        if(errors.includes("recetasError")){
+            for (i=0; i<recetas.length; i++){
+                recetas[i].classList.remove("inputError")
+            }
+            document.getElementById("recetasError").remove();
+            errors = errors.filter(function(item) {
+                return item !== "recetasError"
+            })
+        }
+    }
+
+    //en caso de que ese elemento no haya dado error previamente crea e inserta una label con el texto
+    //"text", después del elemento "place", y con el id "id", y pushea el id en el array errors
+    function insertLabel(place,text,id){
+        if (!errors.includes(id)){
+            const label = document.createElement("label");
+            label.classList.add("error")
+            label.id = id
+            label.innerHTML=text
+            place.insertAdjacentElement("afterend",label)
+            errors.push(id)
+        }
+    }
+
+    //aplica insertLabel, y ademas añade la clase inputError a "place" (no sirve para recetas ni para mail)
+    function insertErrorLabel(place, text,id){
+        if (!errors.includes(id)){
+            insertLabel(place,text,id)
+            place.classList.add("inputError")
+        }
+    }
+
+    // nombre.addEventListener("keypress", function(e){
+    //     if (!errors.includes("nombreError")){
+    //         if (nombreVacio()){
+    //             errors.push("nombreError")
+    //         }
+    //     }
+    //     else if (!nombreVacio()){
+    //         errors.remove("nombreError")
+    //     }
+    // })
+    
+    // apellido.addEventListener("keypress", function(e){
+    //     if (!errors.includes("nombreError")){
+    //         if (nombreVacio()){
+    //             errors.push("nombreError")
+    //         }
+    //     }
+    //     else if (!nombreVacio()){
+    //         errors.remove("nombreError")
+    //     }
+    // })
+
+    form.addEventListener("submit",function(e){
+        if (nombreVacio()){
+            insertErrorLabel(nombre,"Ingrese su nombre","nombreError")
+        } else {
+            removeError(nombre,"nombreError");
         }
         if (apellidoVacio()){
-            apellido.classList.add("inputError")
-            apellidoError.classList.add("error")
-            apellidoError.innerHTML="Ingrese su apellido"
+            insertErrorLabel(apellido,"Ingrese su apellido","apellidoError")
         }
         else{
-            apellido.classList.remove("inputError")
-            apellidoError.classList.remove("error")
-            apellidoError.innerHTML=""
+            removeError(apellido,"apellidoError");
         }
         if (emailVacio()){
-            mail.classList.remove("inputError")
-            mailError.classList.add("error")
-            mailError.innerHTML="Ingrese su mail"
+            insertLabel(mailHelp,"Ingrese su mail","mailError")
+            mail.classList.add("inputError")
+        }
+        else if (emailIncompleto()){
+            insertLabel(mailHelp,"Ingrese una dirección de email correcta","mailError")
+            mail.classList.add("inputError")
         }
         else{
-            mail.classList.remove("inputError")
-            mailError.classList.remove("error")
-            mailError.innerHTML=""
+            removeError(mail,"mailError");
         }
         if (recetasVacias()){
-            for (let i=0; i<recetas.length; i++){
-                recetas[i].classList.add("error")
+            for (i=0; i<recetas.length; i++){
+                recetas[i].classList.add("inputError")
             }
-            recetasError.classList.add("error")
-            recetasError.innerHTML="Elija alguna receta"
+            insertLabel(finRecetas,"Elija alguna receta","recetasError")
         }
         else{
-            recetasError.classList.add("error")
-            recetasError.innerHTML=""
+            removeRecetasError();
         }
-        if (emailIncompleto()){
-            document.getElementById("mail").classList.add("inputError")
-            mailError.classList.add("error")
-            mailError.innerHTML="Ingrese una direccíón de email correcta"
+        if(errors.length >0){
+            e.preventDefault()
         }
-        else{
-            document.getElementById("mail").classList.remove("inputError")
-            mailError.classList.remove("error")
-            mailError.innerHTML=""
-        }
+    })
+    
+    form.addEventListener("reset", function(e){
+        removeError(nombre,"nombreError");
+        removeError(apellido,"apellidoError");
+        removeError(mail,"mailError");
+        removeRecetasError();
     })
 })
