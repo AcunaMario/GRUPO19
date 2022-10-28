@@ -29,7 +29,9 @@
     </header>
 
     <main>
-        <h1 class="titulo">Formulario</h1>
+        <div class="titulo">
+            <h1 class="tituloFormulario">Formulario de contacto</h1>
+        </div>
         <form id="formulario">
             <div class="mb-3 infoCliente">
                 <label for="nombre" class="form-label">Nombre</label>
@@ -113,10 +115,16 @@
             <button type="reset" class="btn btn-danger">Borrar</button>
         </form>
     </main>
-    <footer>
-        <div class="icon"><img src="../assets/images/footer/mail.png" width="40px"></div>
-        <div class="icon"><img src="../assets/images/footer/map.png" width="40px"></div>
-        <div class="icon"><img src="../assets/images/footer/phone.png" width="40px"></div>
+    <footer class="contactoFooter">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19153.413321165808!2d-58.59658752789299!3d-34.52392018802518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1666923387222!5m2!1ses-419!2sar"
+            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="icons">
+            <div class="icon"><img src="../assets/images/footer/mail.png" width="40px"></div>
+            <div class="icon"><img src="../assets/images/footer/map.png" width="40px"></div>
+            <div class="icon"><img src="../assets/images/footer/phone.png" width="40px"></div>
+        </div>
     </footer>
 
     <script src="../assets/js/validation.js"></script>

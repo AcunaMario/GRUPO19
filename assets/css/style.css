@@ -1,7 +1,14 @@
+:root{
+    --verdeClaro : #78BE78;
+    --verdeIntermedio : #008037;
+    --verdeOscuro : #0b3119;
+    --marron : #C48461;
+    --beige : #DAB88B;
+}
+
 #header{
     display: flex;
     z-index: 1;
-
 }
 
 /* .navigation{    
@@ -12,18 +19,18 @@
     top: 0;
     flex-direction: row;
 } */
+
 .logo{
    margin-right: auto;
 }
+
 a{
     text-decoration: none;
-    color: #008037;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+    color: var(--verdeIntermedio);
 }
 
 a:hover{
-    color: rgb(11, 49, 25);
+    color: var(--verdeOscuro);
 }
 
 .navigation{
@@ -36,6 +43,7 @@ a:hover{
     z-index: 100;
     background-color: white;
 }
+
 .navigationPages{
     text-decoration: none;
     font-size: 20px;
@@ -43,7 +51,9 @@ a:hover{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #008037;
+    color: var(--verdeIntermedio);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 /* .navigationPages:hover{
@@ -52,7 +62,6 @@ a:hover{
 } */
 
 body{
-    background-color: rgb(255, 255, 255);
     /* text-align: center; */
     margin-top: 100px;
 }
@@ -62,7 +71,6 @@ body{
     grid-template-columns: auto auto auto;
     grid-template-rows: 50px 300px 30px 300px 60px 300px 60px;
     justify-content: 30% 30% 30%;
-    background-color: aqua;
     margin: 0;
     width: 100%;
     /* border: 1px solid black; */
@@ -70,16 +78,16 @@ body{
     
 }
 
-.caja{
-    /* border: 1px solid black; */
-    background-color: rgb(255, 255, 255);
-}
+/* .caja{
+    border: 1px solid black;
+} */
 .c1{
     grid-column: 1/4;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .C2{
     grid-column: 1/2;
 }
@@ -97,9 +105,19 @@ body{
     flex-direction: column;
     justify-content: center;
 }
+
 footer{
     display: flex;
     flex-direction: row-reverse;
+    align-items: flex-end;
+}
+
+.contactoFooter{
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto auto;
+    justify-items: 0px end;
+    align-items: end;
 }
 
 form{
@@ -107,10 +125,22 @@ form{
     max-width: 20rem;
 }
 
-.titulo{
+.titulo {
     display: flex;
     justify-content: center;
-    color: #304b3c;
+    margin-bottom: 12vh;
+}
+
+.tituloFormulario{
+    background-color: white;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    margin-top: 2vh;
+    color: var(--verdeIntermedio);
+    border: solid 5px var(--verdeOscuro);
+    border-radius: 10px;
+    box-shadow: 0, 0, 20px black;
 }
 
 .error{
@@ -119,4 +149,9 @@ form{
 
 .inputError{
     border: solid 1px #dc3545;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row-reverse;
 }
