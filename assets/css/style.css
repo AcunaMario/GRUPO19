@@ -154,3 +154,8 @@ form{
     display: flex;
     flex-direction: row-reverse;
 }
+
+#barraBuscadora{
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.521);
+}
