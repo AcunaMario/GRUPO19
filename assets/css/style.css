@@ -4,14 +4,7 @@
 
 }
 
-/* .navigation{    
-    width: 100%;
-    height: 100px;
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    top: 0;
-    flex-direction: row;
-} */
+
 .logo{
    margin-right: auto;
 }
@@ -46,10 +39,6 @@ a:hover{
     color: #008037;
 }
 
-/* .navigationPages:hover{
-    color: rgb(56, 76, 167);
-    background-color: transparent;
-} */
 
 body{
     background-color: rgb(255, 255, 255);
@@ -59,36 +48,22 @@ body{
 
 .grid-layout{
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: 50px 300px 30px 300px 60px 300px 60px;
-    justify-content: 30% 30% 30%;
-    background-color: aqua;
-    margin: 0;
-    width: 100%;
-    /* border: 1px solid black; */
-    text-align: center;
-    
+    gap: 8rem;
+    grid-auto-rows: 22rem;
+    margin: 1rem;
+    grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr))
+        
 }
-
 .caja{
-    /* border: 1px solid black; */
-    background-color: rgb(255, 255, 255);
-}
-.c1{
-    grid-column: 1/4;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;    
 }
-.C2{
-    grid-column: 1/2;
-}
-.c3{
-    grid-column: 2/3;
-}
-
-.c4{
-    grid-column: 3/4;
+.tituloIndex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nombreReceta{
