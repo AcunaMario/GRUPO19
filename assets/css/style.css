@@ -86,6 +86,7 @@ body {
 /* .caja{
     border: 1px solid black;
 } */
+
 .c1 {
     grid-column: 1/4;
     display: flex;
@@ -133,7 +134,7 @@ form {
 .titulo {
     display: flex;
     justify-content: center;
-    margin-bottom: 10vh;
+    margin-bottom: 8vh;
 }
 
 .tituloFormulario {
@@ -142,8 +143,6 @@ form {
     position: fixed;
     margin-top: 1vh;
     color: var(--verdeIntermedio);
-    /* border: solid 3px var(--verdeOscuro);
-    border-radius: 12px; */
     text-decoration: underline;
     box-shadow: 0, 0, 20px black;
 }
@@ -169,7 +168,12 @@ form {
 }
 
 .paginaActual {
-    color: var(--verdeBrillante);
+    color: var(--beige);
     font-family: Montserrat_bold;
-    text-decoration: underline;
+    border-bottom: 2px solid var(--beige);
+}
+
+.paginaActual:hover {
+    color: var(--marron);
+    border-bottom-color: var(--marron);
 }
