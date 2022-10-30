@@ -66,6 +66,7 @@ body {
     margin-top: 100px;
 }
 
+
 .grid-layout {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -135,7 +136,7 @@ form {
     background-color: white;
     display: block;
     position: fixed;
-    margin-top: 2vh;
+    /* margin-top: 2vh; */
     color: var(--verdeIntermedio);
     /* border: solid 3px var(--verdeOscuro);
     border-radius: 12px; */
