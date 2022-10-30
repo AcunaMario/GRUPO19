@@ -6,6 +6,15 @@
     --beige: #DAB88B;
 }
 
+@font-face {
+    font-family: 'Montserrat_regular';
+    src: url(../fonts/Montserrat/static/Montserrat-Regular.ttf);
+}
+
+* {
+    font-family: Montserrat_regular;
+}
+
 #header {
     display: flex;
     z-index: 1;
@@ -128,14 +137,14 @@ form {
 .titulo {
     display: flex;
     justify-content: center;
-    margin-bottom: 12vh;
+    margin-bottom: 10vh;
 }
 
 .tituloFormulario {
     background-color: white;
     display: block;
     position: fixed;
-    margin-top: 2vh;
+    margin-top: 1vh;
     color: var(--verdeIntermedio);
     /* border: solid 3px var(--verdeOscuro);
     border-radius: 12px; */
