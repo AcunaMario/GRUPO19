@@ -21,13 +21,30 @@
                     <div class="navigationPages"><a href="./recetas.html" class="paginaActual">RECETAS</a></div>
                     <div class="navigationPages"><a href="./saludyalimentacion.html">SALUD Y ALIMENTOS</a></div>
                     <div class="navigationPages"><a href="./contacto.html">CONTACTO</a></div>
-                    <div class="navigationPages">BUSQUEDA</div>
+                    <div class="navigationPages" id="divBusqueda">
+                        <div id="busqueda">BÚSQUEDA</div>
+                        <div id="barraYLupa" hidden>
+                            <input type="text" id="barraBuscadora" placeholder="Búsqueda">
+                            <a href="#lupa" id="lupa">Lupa</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
     <main>
+        <table>
+            <thead>
+                <th>Receta</th>
+                <th>Calorías</th>
+                <th>Grasas</th>
+                <th>Carbohidratos</th>
+                <th>Url</th>
+            </thead>
+            <tbody id="tableBody">
 
+            </tbody>
+        </table>
     </main>
 
     <footer class="contactoFooter">
@@ -37,6 +54,8 @@
             <div class="icon"><img src="../assets/images/footer/phone.png" width="40px"></div>
         </div>
     </footer>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/searchBar.js"></script>
 </body>
 
 </html>
