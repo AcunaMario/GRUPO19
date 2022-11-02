@@ -1,5 +1,6 @@
 :root {
     --verdeBrillante: #3abe20;
+    --verdeMasClaro: #9ae09a;
     --verdeClaro: #78BD78;
     --verdeIntermedio: #008037;
     --verdeOscuro: #0b3119;
@@ -47,6 +48,8 @@ a:hover {
     justify-content: center;
     z-index: 100;
     background-color: white;
+    /* background-color: var(--verdeMasClaro); */
+    border-bottom: 3px solid var(--beige);
 }
 
 .navigationPages {
@@ -59,6 +62,7 @@ a:hover {
     color: var(--verdeIntermedio);
     /* font-family: 'Courier New', Courier, monospace; */
     font-weight: bold;
+    max-height: 66px;
 }
 
 /* .navigationPages:hover{
@@ -176,4 +180,40 @@ form {
 .paginaActual:hover {
     color: var(--marron);
     border-bottom-color: var(--marron);
+}
+
+#tableContainer {
+    margin-left: 2vw;
+    margin-top: 14vh;
+}
+
+th {
+    text-align: left;
+    padding-bottom: 25px;
+    padding-right: 10px;
+    font-size: large;
+    font-family: Montserrat_bold;
+    color: var(--verdeOscuro);
+}
+
+table a {
+    color: var(--marron);
+}
+
+table a:hover {
+    color: #945c3f;
+}
+
+
+td {
+    padding: 0 20px 10px 0;
+}
+
+tr {
+    border: 1px solid var(--beige);
+    border-radius: 5px;
+}
+
+#celdaAcortada {
+    max-width: 20vw;
 }

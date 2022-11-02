@@ -1,114 +1,144 @@
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': '63404edba9msh74e5984caaebdd5p150272jsna30639747041',
-        'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
-    }
-};
-const urlNutritionAPI = 'https://calorieninjas.p.rapidapi.com/v1/nutrition?query='
-
-const fetchAppNutrition = (ingredientes) => {
-    return fetch(urlNutritionAPI + ingredientes, options)
-        .then(response => response.json())
-        .catch(err => console.error(err));
-    // calories
-    // carbohydrates_total_g
-    // cholesterol_mg
-    // fat_saturated_g
-    // fat_total_g
-    // fiber_g
-    // name
-    // potassium_mg
-    // protein_g
-    // serving_size_g
-    // sodium_mg
-    // sugar_g
-}
-
-const urlRecipesAPI = 'https://api.sampleapis.com/recipes/recipes'
-
-const fetchAppRecipes = () => {
-    fetch(urlRecipesAPI)
-        .then(response => response.json())
-        .then(response => {
-            console.log(response);
-            for (recipe of response) {
-                const $tableBody = document.getElementById('tableBody');
-                let tr = document.createElement("tr")
-                let td = document.createElement("td")
-                td.innerHTML = recipe.title;
-                tr.append(td)
-                td = document.createElement("td")
-                td.innerHTML = recipe.calories;
-                tr.append(td)
-                td = document.createElement("td")
-                td.innerHTML = recipe.fat;
-                tr.append(td)
-                td = document.createElement("td")
-                td.innerHTML = recipe.carbohydrate;
-                tr.append(td)
-                td = document.createElement("td")
-                let a = document.createElement("a")
-                a.href = recipe.url;
-                a.target = "blank"
-                a.innerHTML = recipe.title;
-                td.append(a)
-                tr.append(td)
-                $tableBody.append(tr)
+window.addEventListener('load', function () {
+    const fetchAppNutrition = (ingredientes) => {
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '63404edba9msh74e5984caaebdd5p150272jsna30639747041',
+                'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
             }
-        })
-        .catch(err => console.error(err));
-    // calories
-    // carbohydrate
-    // categoryname
-    // cholesterol
-    // cooktime
-    // cuisine
-    // description
-    // fat
-    // fiber
-    // title
-}
+        };
 
-const $lupa = document.getElementById("lupa");
-const $searchBar = document.getElementById("barraBuscadora");
+        const urlNutritionAPI = 'https://calorieninjas.p.rapidapi.com/v1/nutrition?query='
 
-async function appNutrition(e) {
-    $lupa.ariaBusy = true
-    const ingredientes = $searchBar.value
-    const { items } = await fetchAppNutrition(ingredientes)
-    let aux = ""
-    for (let item of items) {
-        aux += "Alimento: " + item.name + "\n";
-        aux += "Cantidad: " + item.serving_size_g + "g\n";
-        aux += "Calorias: " + item.calories + "cal\n";
-        aux += "Proteínas: " + item.protein_g + "g\n\n";
+        return fetch(urlNutritionAPI + ingredientes, options)
+            .then(response => response.json())
+            .catch(err => console.error(err));
+        // calories
+        // carbohydrates_total_g
+        // cholesterol_mg
+        // fat_saturated_g
+        // fat_total_g
+        // fiber_g
+        // name
+        // potassium_mg
+        // protein_g
+        // serving_size_g
+        // sodium_mg
+        // sugar_g
     }
-    console.log(aux);
-}
 
-$lupa.addEventListener("click", appNutrition);
+    const $lupa = document.getElementById("lupa");
+    const $searchBar = document.getElementById("barraBuscadora");
 
-$searchBar.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-        appNutrition();
+    async function appNutrition() {
+        const ingredientes = $searchBar.value
+        const { items } = await fetchAppNutrition(ingredientes)
+        let aux = ""
+        for (let item of items) {
+            aux += "Alimento: " + item.name + "\n";
+            aux += "Cantidad: " + item.serving_size_g + "g\n";
+            aux += "Calorias: " + item.calories + "cal\n";
+            aux += "Proteínas: " + item.protein_g + "g\n\n";
+        }
+        console.log(aux);
     }
-});
 
 
-async function appRecipes() {
-    const infoApp = await fetchAppRecipes();
-    console.log(infoApp);
-
-}
-
-
-$lupa.addEventListener("click", appRecipes);
-
-$searchBar.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-        appRecipes();
+    const fetchAppRecipes = () => {
+        const urlRecipesAPI = 'https://api.sampleapis.com/recipes/recipes'
+        return fetch(urlRecipesAPI)
+            .then(response => response.json())
+            .catch(err => console.error(err));
+        // calories
+        // carbohydrate
+        // categoryname
+        // cholesterol
+        // cooktime
+        // cuisine
+        // description
+        // fat
+        // fiber
+        // title
     }
-});
 
-fetchAppRecipes();
+    function createTableData(info) {
+        let td = document.createElement("td")
+        if (info === "") {
+            td.innerHTML = "No info"
+        }
+        else {
+            td.innerHTML = info;
+        }
+        return td;
+    }
+
+    function createLink(recipe) {
+        let td = document.createElement("td")
+        let a = document.createElement("a")
+        a.href = recipe.url;
+        a.target = "blank"
+        a.innerHTML = recipe.title;
+        td.append(a)
+        td.id = "celdaAcortada"
+        return td;
+    }
+
+    function createImg(url) {
+        let td = document.createElement("td")
+        let img = document.createElement("img")
+        img.src = url;
+        img.width = "100"
+        img.height = "100"
+        td.appendChild(img)
+        return td;
+    }
+
+    function createTableRow(recipe) {
+        let tr = document.createElement("tr")
+        let tdTitulo = createTableData(recipe.title)
+        tdTitulo.id = "celdaAcortada"
+        tr.append(tdTitulo)
+        tr.append(createTableData(recipe.calories))
+        tr.append(createTableData(recipe.fat))
+        tr.append(createTableData(recipe.carbohydrate))
+        tr.append(createTableData(recipe.cholesterol))
+        tr.append(createTableData(recipe.fiber))
+        tr.append(createTableData(recipe.sugar))
+        tr.append(createTableData(recipe.protein))
+        tr.append(createTableData(recipe.sodium))
+        tr.append(createLink(recipe))
+        tr.append(createImg(recipe.photoUrl))
+        return tr;
+    }
+
+    async function appRecipes() {
+        const infoApp = await fetchAppRecipes();
+        console.log(infoApp)
+        for (recipe of infoApp) {
+            const $tableBody = document.getElementById('tableBody');
+            $tableBody.append(createTableRow(recipe))
+        }
+        document.getElementById("tableContainer").hidden = false
+        document.getElementById("footerHidden").hidden = false
+    }
+    appRecipes();
+
+    async function filterRecipes() {
+        let { value } = $searchBar
+        const infoApp = await fetchAppRecipes();
+        console.log(value)
+    }
+
+
+    $lupa.addEventListener("click", function (e) {
+        filterRecipes()
+        appNutrition()
+    });
+
+    $searchBar.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            filterRecipes()
+            appNutrition();
+        }
+    });
+})

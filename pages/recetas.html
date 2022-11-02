@@ -18,42 +18,49 @@
                 <div class="navigationLogo  logo"><a href="../index.html"> <img class="logo"
                             src="../assets/images/logo.JPG" height="100px"></a></div>
                 <div class="navigationPages">
-                    <div class="navigationPages"><a href="./recetas.html" class="paginaActual">RECETAS</a></div>
-                    <div class="navigationPages"><a href="./saludyalimentacion.html">SALUD Y ALIMENTOS</a></div>
-                    <div class="navigationPages"><a href="./contacto.html">CONTACTO</a></div>
                     <div class="navigationPages" id="divBusqueda">
                         <div id="busqueda">BÚSQUEDA</div>
                         <div id="barraYLupa" hidden>
-                            <input type="text" id="barraBuscadora" placeholder="Búsqueda">
+                            <input type="text" id="barraBuscadora" placeholder="Buscar receta">
                             <a href="#lupa" id="lupa">Lupa</a>
                         </div>
                     </div>
+                    <div class="navigationPages"><a href="./recetas.html" class="paginaActual">RECETAS</a></div>
+                    <div class="navigationPages"><a href="./saludyalimentacion.html">SALUD Y ALIMENTOS</a></div>
+                    <div class="navigationPages"><a href="./contacto.html">CONTACTO</a></div>
                 </div>
             </div>
         </nav>
     </header>
     <main>
-        <table>
-            <thead>
-                <th>Receta</th>
-                <th>Calorías</th>
-                <th>Grasas</th>
-                <th>Carbohidratos</th>
-                <th>Url</th>
-            </thead>
-            <tbody id="tableBody">
-
-            </tbody>
-        </table>
-    </main>
-
-    <footer class="contactoFooter">
-        <div class="icons">
-            <div class="icon"><img src="../assets/images/footer/mail.png" width="40px"></div>
-            <div class="icon"><img src="../assets/images/footer/map.png" width="40px"></div>
-            <div class="icon"><img src="../assets/images/footer/phone.png" width="40px"></div>
+        <div id="tableContainer" hidden>
+            <table>
+                <thead>
+                    <th id="celdaAcortada">Receta</th>
+                    <th>Calorías</th>
+                    <th>Grasas</th>
+                    <th>Carbohidratos</th>
+                    <th>Colesterol</th>
+                    <th>Fibra</th>
+                    <th>Azúcar</th>
+                    <th>Proteina</th>
+                    <th>Sodio</th>
+                    <th id="celdaAcortada">Url</th>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
         </div>
-    </footer>
+    </main>
+    <div id="footerHidden" hidden>
+        <footer>
+            <div class="icons">
+                <div class="icon"><img src="../assets/images/footer/mail.png" width="40px"></div>
+                <div class="icon"><img src="../assets/images/footer/map.png" width="40px"></div>
+                <div class="icon"><img src="../assets/images/footer/phone.png" width="40px"></div>
+            </div>
+        </footer>
+    </div>
     <script src="../assets/js/api.js"></script>
     <script src="../assets/js/searchBar.js"></script>
 </body>
