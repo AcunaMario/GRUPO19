@@ -31,6 +31,13 @@ window.addEventListener("load", function () {
         puedeSacar = true
     })
 
+    barraBuscadora.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            barraBuscadora.value = ""
+            puedeSacar = true
+        }
+    })
+
     lupa.addEventListener("click", function (e) {
         barraBuscadora.value = ""
         puedeSacar = true

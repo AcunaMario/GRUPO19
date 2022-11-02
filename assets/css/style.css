@@ -1,5 +1,6 @@
 :root {
     --verdeBrillante: #3abe20;
+    --verdeMasClaro: #9ae09a;
     --verdeClaro: #78BD78;
     --verdeIntermedio: #008037;
     --verdeOscuro: #0b3119;
@@ -47,6 +48,8 @@ a:hover {
     justify-content: center;
     z-index: 100;
     background-color: white;
+    /* background-color: var(--verdeMasClaro); */
+    border-bottom: 3px solid var(--beige);
 }
 
 .navigationPages {
@@ -59,6 +62,7 @@ a:hover {
     color: var(--verdeIntermedio);
     /* font-family: 'Courier New', Courier, monospace; */
     font-weight: bold;
+    max-height: 66px;
 }
 
 /* .navigationPages:hover{
@@ -86,6 +90,7 @@ body {
 /* .caja{
     border: 1px solid black;
 } */
+
 .c1 {
     grid-column: 1/4;
     display: flex;
@@ -114,7 +119,6 @@ body {
 footer {
     display: flex;
     flex-direction: row-reverse;
-    align-items: flex-end;
 }
 
 .contactoFooter {
@@ -133,7 +137,7 @@ form {
 .titulo {
     display: flex;
     justify-content: center;
-    margin-bottom: 10vh;
+    margin-bottom: 8vh;
 }
 
 .tituloFormulario {
@@ -142,8 +146,6 @@ form {
     position: fixed;
     margin-top: 1vh;
     color: var(--verdeIntermedio);
-    /* border: solid 3px var(--verdeOscuro);
-    border-radius: 12px; */
     text-decoration: underline;
     box-shadow: 0, 0, 20px black;
 }
@@ -169,7 +171,60 @@ form {
 }
 
 .paginaActual {
-    color: var(--verdeBrillante);
+    color: var(--beige);
     font-family: Montserrat_bold;
-    text-decoration: underline;
+    border-bottom: 2px solid var(--beige);
+}
+
+.paginaActual:hover {
+    color: var(--marron);
+    border-bottom-color: var(--marron);
+}
+
+#tableContainer {
+    margin-left: 2vw;
+    margin-top: 14vh;
+}
+
+th {
+    text-align: left;
+    padding-bottom: 25px;
+    padding-right: 10px;
+    font-size: large;
+    font-family: Montserrat_bold;
+    color: var(--verdeOscuro);
+    min-width: 5vw;
+}
+
+table a {
+    color: var(--marron);
+}
+
+table a:hover {
+    color: #945c3f;
+}
+
+
+td {
+    padding: 0 20px 10px 0;
+}
+
+tr {
+    border: 1px solid var(--beige);
+    border-radius: 5px;
+}
+
+#celdaAcortada {
+    max-width: 20vw;
+}
+
+h3 {
+    margin-top: 14vh;
+    margin-left: 1vw;
+}
+
+#loading {
+    position: relative;
+    left: 50vw;
+    top: 40vh;
 }
