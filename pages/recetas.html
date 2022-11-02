@@ -22,7 +22,7 @@
                         <div id="busqueda">BÚSQUEDA</div>
                         <div id="barraYLupa" hidden>
                             <input type="text" id="barraBuscadora" placeholder="Buscar receta">
-                            <a href="#lupa" id="lupa">Lupa</a>
+                            <a href="#lupa" id="lupa"><i class="fa-solid fa-magnifying-glass" id="searchIcon"></i></a>
                         </div>
                     </div>
                     <div class="navigationPages"><a href="./recetas.html" class="paginaActual">RECETAS</a></div>
@@ -33,6 +33,7 @@
         </nav>
     </header>
     <main>
+        <i class="fa-solid fa-circle-notch fa-spin fa-2xl" id="loading"></i>
         <div id="tableContainer" hidden>
             <table>
                 <thead>
@@ -63,6 +64,7 @@
     </div>
     <script src="../assets/js/api.js"></script>
     <script src="../assets/js/searchBar.js"></script>
+    <script src="https://kit.fontawesome.com/80cc4d2c64.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

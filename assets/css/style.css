@@ -119,7 +119,6 @@ body {
 footer {
     display: flex;
     flex-direction: row-reverse;
-    align-items: flex-end;
 }
 
 .contactoFooter {
@@ -194,6 +193,7 @@ th {
     font-size: large;
     font-family: Montserrat_bold;
     color: var(--verdeOscuro);
+    min-width: 5vw;
 }
 
 table a {
@@ -216,4 +216,15 @@ tr {
 
 #celdaAcortada {
     max-width: 20vw;
+}
+
+h3 {
+    margin-top: 14vh;
+    margin-left: 1vw;
+}
+
+#loading {
+    position: relative;
+    left: 50vw;
+    top: 40vh;
 }

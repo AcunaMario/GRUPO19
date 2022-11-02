@@ -29,6 +29,10 @@ window.addEventListener('load', function () {
 
     const $lupa = document.getElementById("lupa");
     const $searchBar = document.getElementById("barraBuscadora");
+    const $tableBody = document.getElementById('tableBody');
+    const $main = document.querySelector("main");
+    const $loading = document.getElementById("loading");
+    const $searchIcon = document.getElementById("searchIcon")
 
     async function appNutrition() {
         const ingredientes = $searchBar.value
@@ -111,22 +115,60 @@ window.addEventListener('load', function () {
         return tr;
     }
 
-    async function appRecipes() {
+    async function iniciarRecetas() {
+        $loading.style.display = "var(--fa-display, inline-block)";
         const infoApp = await fetchAppRecipes();
-        console.log(infoApp)
+        $loading.style.display = "none";
+        appRecipes(infoApp)
+    }
+    iniciarRecetas();
+
+    function appRecipes(infoApp) {
         for (recipe of infoApp) {
-            const $tableBody = document.getElementById('tableBody');
             $tableBody.append(createTableRow(recipe))
         }
         document.getElementById("tableContainer").hidden = false
         document.getElementById("footerHidden").hidden = false
     }
-    appRecipes();
+
+    function deleteRecipes() {
+        let tableRows = $tableBody.querySelectorAll("tr")
+        for (tr of tableRows) {
+            $tableBody.removeChild(tr)
+        }
+        let h3 = $main.querySelector("h3");
+        if (h3 !== null) {
+            $main.removeChild(h3);
+        }
+    }
 
     async function filterRecipes() {
         let { value } = $searchBar
+        $searchIcon.classList.remove("fa-magnifying-glass")
+        $searchIcon.classList.add("fa-circle-notch", "fa-spin")
         const infoApp = await fetchAppRecipes();
-        console.log(value)
+        $searchIcon.classList.add("fa-magnifying-glass")
+        $searchIcon.classList.remove("fa-circle-notch", "fa-spin")
+        if (value === "") {
+            deleteRecipes()
+            appRecipes(infoApp)
+        }
+        else {
+            let recetasBuscadas = infoApp.filter(function (recipe) {
+                return recipe.title.trim().toLowerCase().includes(value.toLowerCase());
+            })
+            deleteRecipes()
+            console.log(recetasBuscadas)
+            if (recetasBuscadas.length !== 0) {
+                appRecipes(recetasBuscadas)
+            }
+            else {
+                document.getElementById("tableContainer").hidden = true;
+                let h3 = document.createElement("h3");
+                h3.innerHTML = 'Receta "' + value + '" no encontrada';
+                $main.appendChild(h3);
+            }
+        }
     }
 
 
