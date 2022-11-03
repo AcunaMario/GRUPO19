@@ -75,6 +75,7 @@ body {
     margin-top: 100px;
 }
 
+
 .grid-layout {
     display: grid;
     grid-template-columns: auto auto auto;
