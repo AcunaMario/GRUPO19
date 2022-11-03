@@ -96,6 +96,7 @@ body {
 footer {
     display: flex;
     flex-direction: row-reverse;
+    margin-bottom: 2vh;
 }
 
 .contactoFooter {
@@ -138,6 +139,11 @@ form {
 .icons {
     display: flex;
     flex-direction: row-reverse;
+    margin-right: 1vw;
+}
+
+.icons a:hover {
+    color: var(--verdeOscuro);
 }
 
 #barraBuscadora {
@@ -204,4 +210,14 @@ h3 {
     position: relative;
     left: 50vw;
     top: 40vh;
+}
+
+h4 {
+    border-bottom: 2px solid var(--beige);
+    max-width: fit-content;
+}
+
+#map {
+    margin-left: 1vw;
+    max-width: fit-content;
 }
