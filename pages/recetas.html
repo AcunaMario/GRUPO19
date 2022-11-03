@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="icon/png" href="../assets/images/favicon.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+    <title>Plant Based</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navigation">
+                <div class="navigationLogo  logo"><a href="../index.html"> <img class="logo"
+                            src="../assets/images/logo.JPG" height="100px"></a></div>
+                <div class="navigationPages">
+                    <div class="navigationPages" id="divBusqueda">
+                        <div id="busqueda">BÚSQUEDA</div>
+                        <div id="barraYLupa" hidden>
+                            <input type="text" id="barraBuscadora" placeholder="Buscar receta">
+                            <a href="#lupa" id="lupa"><i class="fa-solid fa-magnifying-glass" id="searchIcon"></i></a>
+                        </div>
+                    </div>
+                    <div class="navigationPages"><a href="./recetas.html" class="paginaActual">RECETAS</a></div>
+                    <div class="navigationPages"><a href="./saludyalimentacion.html">SALUD Y ALIMENTOS</a></div>
+                    <div class="navigationPages"><a href="./contacto.html">CONTACTO</a></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <i class="fa-solid fa-circle-notch fa-spin fa-2xl" id="loading"></i>
+        <div id="tableContainer" hidden>
+            <table>
+                <thead>
+                    <th id="celdaAcortada">Receta</th>
+                    <th>Calorías</th>
+                    <th>Grasas</th>
+                    <th>Carbohidratos</th>
+                    <th>Colesterol</th>
+                    <th>Fibra</th>
+                    <th>Azúcar</th>
+                    <th>Proteina</th>
+                    <th>Sodio</th>
+                    <th id="celdaAcortada">Url</th>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <div id="footerHidden" hidden>
+        <footer>
+            <div class="icons">
+                <div class="icon"><img src="../assets/images/footer/mail.png" width="40px"></div>
+                <div class="icon"><img src="../assets/images/footer/map.png" width="40px"></div>
+                <div class="icon"><img src="../assets/images/footer/phone.png" width="40px"></div>
+            </div>
+        </footer>
+    </div>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/searchBar.js"></script>
+    <script src="https://kit.fontawesome.com/80cc4d2c64.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
