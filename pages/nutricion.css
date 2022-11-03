@@ -27,3 +27,26 @@
 .portada h4{
     font-weight: 600;
 }
+
+.tituloPrincipal{
+    font-family: 'Montserrat';
+}
+
+.tituloPrincipal h3{
+    color: #008037;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.tituloPrincipal h4{
+    display: flex;
+    justify-content: center;
+}
+
+.tituloPrincipal p{
+    display: flex;
+    justify-content: center;
+}
+
+
