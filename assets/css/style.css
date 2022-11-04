@@ -17,7 +17,6 @@
     z-index: 1;
 }
 
-
 .logo {
     margin-right: auto;
 }
@@ -57,12 +56,10 @@ a:hover {
     max-height: 66px;
 }
 
-
 body {
     /* text-align: center; */
     margin-top: 100px;
 }
-
 
 .grid-layout {
     display: grid;

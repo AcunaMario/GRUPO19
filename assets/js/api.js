@@ -1,52 +1,51 @@
 window.addEventListener('load', function () {
-    const fetchAppNutrition = (ingredientes) => {
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '63404edba9msh74e5984caaebdd5p150272jsna30639747041',
-                'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
-            }
-        };
+    // const fetchAppNutrition = (ingredientes) => {
+    //     const options = {
+    //         method: 'GET',
+    //         headers: {
+    //             'X-RapidAPI-Key': '63404edba9msh74e5984caaebdd5p150272jsna30639747041',
+    //             'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
+    //         }
+    //     };
 
-        const urlNutritionAPI = 'https://calorieninjas.p.rapidapi.com/v1/nutrition?query='
+    //     const urlNutritionAPI = 'https://calorieninjas.p.rapidapi.com/v1/nutrition?query='
 
-        return fetch(urlNutritionAPI + ingredientes, options)
-            .then(response => response.json())
-            .catch(err => console.error(err));
-        // calories
-        // carbohydrates_total_g
-        // cholesterol_mg
-        // fat_saturated_g
-        // fat_total_g
-        // fiber_g
-        // name
-        // potassium_mg
-        // protein_g
-        // serving_size_g
-        // sodium_mg
-        // sugar_g
-    }
+    //     return fetch(urlNutritionAPI + ingredientes, options)
+    //         .then(response => response.json())
+    //         .catch(err => console.error(err));
+    //     // calories
+    //     // carbohydrates_total_g
+    //     // cholesterol_mg
+    //     // fat_saturated_g
+    //     // fat_total_g
+    //     // fiber_g
+    //     // name
+    //     // potassium_mg
+    //     // protein_g
+    //     // serving_size_g
+    //     // sodium_mg
+    //     // sugar_g
+    // }
+
+    // async function appNutrition() {
+    //     const ingredientes = $searchBar.value
+    //     const { items } = await fetchAppNutrition(ingredientes)
+    //     let aux = ""
+    //     for (let item of items) {
+    //         aux += "Alimento: " + item.name + "\n";
+    //         aux += "Cantidad: " + item.serving_size_g + "g\n";
+    //         aux += "Calorias: " + item.calories + "cal\n";
+    //         aux += "Proteínas: " + item.protein_g + "g\n\n";
+    //     }
+    //     console.log(aux);
+    // }
 
     const $lupa = document.getElementById("lupa");
     const $searchBar = document.getElementById("barraBuscadora");
     const $tableBody = document.getElementById('tableBody');
     const $main = document.querySelector("main");
     const $loading = document.getElementById("loading");
-    const $searchIcon = document.getElementById("searchIcon")
-
-    async function appNutrition() {
-        const ingredientes = $searchBar.value
-        const { items } = await fetchAppNutrition(ingredientes)
-        let aux = ""
-        for (let item of items) {
-            aux += "Alimento: " + item.name + "\n";
-            aux += "Cantidad: " + item.serving_size_g + "g\n";
-            aux += "Calorias: " + item.calories + "cal\n";
-            aux += "Proteínas: " + item.protein_g + "g\n\n";
-        }
-        console.log(aux);
-    }
-
+    const $searchIcon = document.getElementById("searchIcon");
 
     const fetchAppRecipes = () => {
         const urlRecipesAPI = 'https://api.sampleapis.com/recipes/recipes'
@@ -154,10 +153,10 @@ window.addEventListener('load', function () {
             appRecipes(infoApp)
         }
         else {
-            let recetasBuscadas = infoApp.filter(function (recipe) {
-                return recipe.title.trim().toLowerCase().includes(value.toLowerCase());
-            })
             deleteRecipes()
+            let recetasBuscadas = infoApp.filter(function (recipe) {
+                return recipe.title.trim().toLowerCase().includes(value.trim().toLowerCase()) || (recipe.ingredients.trim().toLowerCase().includes(value.trim().toLowerCase()));
+            })
             console.log(recetasBuscadas)
             if (recetasBuscadas.length !== 0) {
                 appRecipes(recetasBuscadas)
