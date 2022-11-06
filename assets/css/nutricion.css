@@ -26,25 +26,28 @@
     font-weight: 600;
 }
 
-.tituloPrincipal{
+.tituloPrincipal {
     font-family: 'Montserrat';
 }
 
-.tituloPrincipal h3{
+.tituloPrincipal h3 {
     color: #008037;
     margin-top: 50px;
     display: flex;
     justify-content: center;
 }
 
-.tituloPrincipal h4{
+.tituloPrincipal h4 {
     display: flex;
     justify-content: center;
 }
 
-.tituloPrincipal p{
+.tituloPrincipal p {
     display: flex;
     justify-content: center;
 }
 
-
+.platoPlantBased {
+    width: 100%;
+    max-width: 100%;
+}

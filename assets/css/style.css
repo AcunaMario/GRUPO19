@@ -6,6 +6,7 @@
     --verdeOscuro: #0b3119;
     --marron: #C48462;
     --beige: #DBB78C;
+    --beigeOscuro: #946938;
 }
 
 * {
@@ -39,26 +40,29 @@ a:hover {
     justify-content: center;
     z-index: 100;
     background-color: white;
-    /* background-color: var(--verdeMasClaro); */
-    border-bottom: 3px solid var(--beige);
+    border-bottom: 0.17rem solid var(--beige);
 }
 
 .navigationPages {
     text-decoration: none;
-    font-size: 20px;
-    margin: 20px;
+    font-size: 1.25rem;
+    margin: 1.25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: var(--verdeIntermedio);
     /* font-family: 'Courier New', Courier, monospace; */
     font-weight: bold;
-    max-height: 66px;
+    max-height: 4.125rem;
+}
+
+.navigation #menuButton {
+    display: none;
 }
 
 body {
     /* text-align: center; */
-    margin-top: 100px;
+    margin-top: 6.25rem;
 }
 
 .grid-layout {
@@ -82,18 +86,22 @@ body {
     align-items: center;
 }
 
+.tituloIndex h1 {
+    border-bottom: 1px solid var(--beige);
+}
+
 .nombreReceta {
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #008037;
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 footer {
     display: flex;
     flex-direction: row-reverse;
-    margin-bottom: 2vh;
+    margin-bottom: 1rem;
 }
 
 .contactoFooter {
@@ -112,7 +120,7 @@ form {
 .titulo {
     display: flex;
     justify-content: center;
-    margin-bottom: 8vh;
+    margin-bottom: 4.4rem;
 }
 
 .tituloFormulario {
@@ -136,7 +144,7 @@ form {
 .icons {
     display: flex;
     flex-direction: row-reverse;
-    margin-right: 1vw;
+    margin-right: 0.675rem;
 }
 
 .icons a:hover {
@@ -153,7 +161,7 @@ form {
 .paginaActual {
     color: var(--beige);
     font-family: Montserrat_bold;
-    border-bottom: 2px solid var(--beige);
+    border-bottom: 0.125rem solid var(--beige);
 }
 
 .paginaActual:hover {
@@ -162,18 +170,18 @@ form {
 }
 
 #tableContainer {
-    margin-left: 2vw;
-    margin-top: 14vh;
+    margin-left: 1.25rem;
+    margin-top: 8.5rem;
 }
 
 th {
     text-align: left;
-    padding-bottom: 25px;
-    padding-right: 10px;
+    padding-bottom: 0.64rem;
+    padding-right: 0.625rem;
     font-size: large;
     font-family: Montserrat_bold;
     color: var(--verdeOscuro);
-    min-width: 5vw;
+    min-width: 1rem;
 }
 
 table a {
@@ -186,12 +194,7 @@ table a:hover {
 
 
 td {
-    padding: 0 20px 10px 0;
-}
-
-tr {
-    border: 1px solid var(--beige);
-    border-radius: 5px;
+    padding: 0 1.25rem 0.625rem 0;
 }
 
 #celdaAcortada {
@@ -199,7 +202,7 @@ tr {
 }
 
 h3 {
-    margin-top: 14vh;
+    margin-top: 9.45rem;
     margin-left: 1vw;
 }
 
@@ -217,4 +220,69 @@ h4 {
 #map {
     margin-left: 1vw;
     max-width: fit-content;
+}
+
+@media only screen and (max-width: 767px) {
+    .navigation {
+        max-height: 5rem;
+        display: flex;
+    }
+
+    .navigationLogo img {
+        max-height: 5rem;
+        order: 1;
+    }
+
+    .navigationPages {
+        display: none;
+        order: 2;
+        margin: 0;
+        max-height: none;
+    }
+
+    .navigation #menuButton {
+        display: flex;
+        margin-right: 2rem;
+        align-self: center;
+        justify-self: flex-end;
+        order: 3;
+    }
+
+    .navigation .active+#sub-menu {
+        display: block;
+        position: fixed;
+        background-color: var(--marron);
+        width: 100%;
+        height: fit-content;
+        top: 5.17rem;
+        border-bottom: 0.17rem solid var(--beige);
+        transition: all .3s ease;
+        padding: 0;
+    }
+
+    .navigation .active+#sub-menu li {
+        display: block;
+        padding-top: 0.7rem;
+        padding-bottom: 0.35rem;
+        padding-left: 1.4rem;
+    }
+
+    .navigation .active+#sub-menu li:last-child {
+        padding-bottom: 0.7rem;
+    }
+
+    .navigation .active+#sub-menu li:hover {
+        background-color: var(--beigeOscuro);
+    }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .icons {
+        margin-top: 1rem;
+    }
+
+    body {
+        background-color: aquamarine;
+    }
 }
