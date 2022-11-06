@@ -16,14 +16,20 @@
     <header>
         <nav>
             <div class="navigation">
-                <div class="navigationLogo  logo"><a href="../index.html"> <img class="logo"
-                            src="../assets/images/logo.JPG" height="100px"></a></div>
-                <div class="navigationPages">
-                    <div class="navigationPages"><a href="./recetas.html">RECETAS</a></div>
-                    <div class="navigationPages"><a href="./saludyalimentacion.html" class="paginaActual">SALUD Y
-                            ALIMENTOS</a></div>
-                    <div class="navigationPages"><a href="./contacto.html">CONTACTO</a></div>
-                </div>
+                <div class="navigationLogo"><a href="../index.html"> <img class="logo"
+                            src="../assets/images/Logo-blanco-cuadrado.png" height="100px"></a></div>
+                <div id="menuButton"><a href="#"><i class="fa-solid fa-bars fa-2xl"></i></a></div>
+                <ul class="navigationPages" id="sub-menu">
+                    <a href="../pages/recetas.html">
+                        <li class="navigationPages">RECETAS</li>
+                    </a>
+                    <a href="../pages/saludyalimentacion.html">
+                        <li class="navigationPages paginaActual">SALUD Y ALIMENTOS</li>
+                    </a>
+                    <a href="../pages/contacto.html">
+                        <li class="navigationPages">CONTACTO</li>
+                    </a>
+                </ul>
             </div>
         </nav>
     </header>
@@ -55,6 +61,7 @@
             </div>
         </div>
     </footer>
+    <script src="../assets/js/menu.js"></script>
     <script src="https://kit.fontawesome.com/80cc4d2c64.js" crossorigin="anonymous"></script>
 
 </body>
