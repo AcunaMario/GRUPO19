@@ -1,3 +1,33 @@
+@keyframes coloresFondo {
+    0% {
+        color: var(--beige);
+    }
+
+    17% {
+        color: var(--marron);
+    }
+
+    33% {
+        color: var(--beigeOscuro);
+    }
+
+    50% {
+        color: var(--verdeOscuro);
+    }
+
+    67% {
+        color: var(--verdeIntermedio);
+    }
+
+    83% {
+        color: var(--verdeClaro);
+    }
+
+    100% {
+        color: var(--verdeMasClaro);
+    }
+}
+
 :root {
     --verdeBrillante: #3abe20;
     --verdeMasClaro: #9ae09a;
@@ -176,8 +206,11 @@ form {
     margin-right: 0.675rem;
 }
 
-.icons a:hover {
-    color: var(--beigeOscuro);
+.icons a {
+    animation-name: coloresFondo;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #barraBuscadora {
