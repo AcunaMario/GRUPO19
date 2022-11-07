@@ -17,13 +17,20 @@
     <header>
         <nav>
             <div class="navigation">
-                <div class="navigationLogo  logo"><a href="../index.html"> <img class="logo"
-                            src="../assets/images/logo.JPG" height="100px"></a></div>
-                <div class="navigationPages">
-                    <div class="navigationPages"><a href="./recetas.html">RECETAS</a></div>
-                    <div class="navigationPages"><a href="./saludyalimentacion.html">SALUD Y ALIMENTOS</a></div>
-                    <div class="navigationPages"><a href="./contacto.html" class="paginaActual">CONTACTO</a></div>
-                </div>
+                <div class="navigationLogo"><a href="../index.html"> <img class="logo"
+                            src="../assets/images/Logo-blanco-cuadrado.png" height="100px"></a></div>
+                <div id="menuButton"><a href="#"><i class="fa-solid fa-bars fa-2xl"></i></a></div>
+                <ul class="navigationPages" id="sub-menu">
+                    <a href="../pages/recetas.html">
+                        <li class="navigationPages">RECETAS</li>
+                    </a>
+                    <a href="../pages/saludyalimentacion.html">
+                        <li class="navigationPages">SALUD Y ALIMENTOS</li>
+                    </a>
+                    <a href="../pages/contacto.html">
+                        <li class="navigationPages paginaActual">CONTACTO</li>
+                    </a>
+                </ul>
             </div>
         </nav>
     </header>
@@ -50,45 +57,47 @@
             <div class="mb-3" id="recetas">
                 <label class="form-label">Seleccione las recetas que realizó</label><br>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="recetas" value="huevo" id="huevo">
-                    <label class="form-check-label" for="huevo">
-                        Huevo a la mexicana
+                    <input class="form-check-input" type="checkbox" name="recetas" value="granolaDeTrigo"
+                        id="granolaDeTrigo">
+                    <label class="form-check-label" for="granolaDeTrigo">
+                        Granola crujiente de trigo sarraceno
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="recetas" value="quesadilla" id="quesadilla">
-                    <label class="form-check-label" for="quesadilla">
-                        Quesadilla
+                    <input class="form-check-input" type="checkbox" name="recetas" value="panqueques" id="panqueques">
+                    <label class="form-check-label" for="panqueques">
+                        Panqueques de col rizada
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="recetas" value="batido" id="batido">
-                    <label class="form-check-label" for="batido">
-                        Batido energético
+                    <input class="form-check-input" type="checkbox" name="recetas" value="granolaDeMango"
+                        id="granolaDeMango">
+                    <label class="form-check-label" for="granolaDeMango">
+                        Granola de mango
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="recetas" value="Ñoquis" id="Ñoquis">
-                    <label class="form-check-label" for="Ñoquis">
-                        Ñoquis
+                    <input class="form-check-input" type="checkbox" name="recetas" value="gallo" id="gallo">
+                    <label class="form-check-label" for="gallo">
+                        Gallo pinto
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="recetas" value="almuerzo2" id="almuerzo2">
-                    <label class="form-check-label" for="almuerzo2">
-                        Almuerzo 2
+                    <input class="form-check-input" type="checkbox" name="recetas" value="cazuela" id="cazuela">
+                    <label class="form-check-label" for="cazuela">
+                        Cazuela horneada de tortillas y tomatillos
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="recetas" value="almuerzo3" id="almuerzo3">
-                    <label class="form-check-label" for="almuerzo3">
-                        Almuerzo 3
+                    <input class="form-check-input" type="checkbox" name="recetas" value="nuggets" id="nuggets">
+                    <label class="form-check-label" for="nuggets">
+                        Nuggets crujientes de tofu
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="recetas" value="flan" id="flan">
-                    <label class="form-check-label" for="flan">
-                        Flan
+                    <input class="form-check-input" type="checkbox" name="recetas" value="bizcocho" id="bizcocho">
+                    <label class="form-check-label" for="bizcocho">
+                        Bizcocho de piña invertido
                     </label>
                 </div>
                 <div class="form-check">
@@ -98,9 +107,9 @@
                     </label>
                 </div>
                 <div class="form-check" id="finRecetas">
-                    <input class="form-check-input" type="checkbox" name="recetas" value="cena3" id="cena3">
-                    <label class="form-check-label" for="cena3">
-                        Cena 3
+                    <input class="form-check-input" type="checkbox" name="recetas" value="manzanas" id="manzanas">
+                    <label class="form-check-label" for="manzanas">
+                        Manzanas al horno rellenas
                     </label>
                 </div>
             </div>
@@ -135,6 +144,7 @@
         </div>
     </footer>
 
+    <script src="../assets/js/menu.js"></script>
     <script src="../assets/js/validation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"

@@ -1,10 +1,11 @@
 window.addEventListener("load", function () {
-    let busqueda = document.getElementById("busqueda")
-    let divBusqueda = document.getElementById("divBusqueda")
-    let barraBuscadora = document.getElementById("barraBuscadora");
-    let lupa = document.getElementById("lupa");
-    let barraYLupa = document.getElementById("barraYLupa");
+    const busqueda = document.getElementById("busqueda")
+    const divBusqueda = document.getElementById("divBusqueda")
+    const barraBuscadora = document.getElementById("barraBuscadora");
+    const lupa = document.getElementById("lupa");
+    const barraYLupa = document.getElementById("barraYLupa");
     let puedeSacar = true
+    const $menuButton = document.getElementById("menuButton");
 
     function ocultarbarraYLupa() {
         barraYLupa.hidden = true;
@@ -34,12 +35,14 @@ window.addEventListener("load", function () {
     barraBuscadora.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             barraBuscadora.value = ""
-            puedeSacar = true
+            puedeSacar = true;
+            $menuButton.classList.toggle("active");
         }
     })
 
     lupa.addEventListener("click", function (e) {
         barraBuscadora.value = ""
         puedeSacar = true
+        $menuButton.classList.toggle("active");
     })
 })

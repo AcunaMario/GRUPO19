@@ -15,20 +15,27 @@
     <header>
         <nav>
             <div class="navigation">
-                <div class="navigationLogo  logo"><a href="../index.html"> <img class="logo"
-                            src="../assets/images/logo.JPG" height="100px"></a></div>
-                <div class="navigationPages">
-                    <div class="navigationPages" id="divBusqueda">
+                <div class="navigationLogo"><a href="../index.html"> <img class="logo"
+                            src="../assets/images/Logo-blanco-cuadrado.png" height="100px"></a></div>
+                <div id="menuButton"><a href="#"><i class="fa-solid fa-bars fa-2xl"></i></a></div>
+                <ul class="navigationPages" id="sub-menu">
+                    <li class="navigationPages" id="divBusqueda">
                         <div id="busqueda">BÚSQUEDA</div>
                         <div id="barraYLupa" hidden>
-                            <input type="text" id="barraBuscadora" placeholder="Buscar receta">
+                            <input type="text" id="barraBuscadora" placeholder="Buscar por receta o ingr.">
                             <a href="#lupa" id="lupa"><i class="fa-solid fa-magnifying-glass" id="searchIcon"></i></a>
                         </div>
-                    </div>
-                    <div class="navigationPages"><a href="./recetas.html" class="paginaActual">RECETAS</a></div>
-                    <div class="navigationPages"><a href="./saludyalimentacion.html">SALUD Y ALIMENTOS</a></div>
-                    <div class="navigationPages"><a href="./contacto.html">CONTACTO</a></div>
-                </div>
+                    </li>
+                    <a href="../pages/recetas.html">
+                        <li class="navigationPages paginaActual">RECETAS</li>
+                    </a>
+                    <a href="../pages/saludyalimentacion.html">
+                        <li class="navigationPages">SALUD Y ALIMENTOS</li>
+                    </a>
+                    <a href="../pages/contacto.html">
+                        <li class="navigationPages">CONTACTO</li>
+                    </a>
+                </ul>
             </div>
         </nav>
     </header>
@@ -67,6 +74,8 @@
             </div>
         </footer>
     </div>
+
+    <script src="../assets/js/menu.js"></script>
     <script src="../assets/js/api.js"></script>
     <script src="../assets/js/searchBar.js"></script>
     <script src="https://kit.fontawesome.com/80cc4d2c64.js" crossorigin="anonymous"></script>
